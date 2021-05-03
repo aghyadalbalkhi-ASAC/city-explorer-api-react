@@ -43,7 +43,7 @@ function weather(req, res) {
 
     const cityWeather = data.find( city =>{
         console.log(city.city_name ,searchQuery );
-        return (city.city_name).toLowerCase() === searchQuery;
+        return (city.city_name).toLowerCase().includes(searchQuery);
     });
 
     const ForecastData = cityWeather.data.map(day =>{
