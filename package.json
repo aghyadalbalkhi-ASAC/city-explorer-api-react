@@ -1,0 +1,25 @@
+{
+  "name": "city-explorer-api-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aghyadalbalkhi-ASAC/city-explorer-api-react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aghyadalbalkhi-ASAC/city-explorer-api-react/issues"
+  },
+  "homepage": "https://github.com/aghyadalbalkhi-ASAC/city-explorer-api-react#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
