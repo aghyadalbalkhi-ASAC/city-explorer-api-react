@@ -46,11 +46,11 @@ function weather(req, res) {
         return (city.city_name).toLowerCase() === searchQuery;
     });
 
-    const Forecast = cityWeather.data.map(day =>{
+    const ForecastData = cityWeather.data.map(day =>{
         return (new Forecast (day.weather.description , day.datetime))
     })
 
-    res.send(Forecast);
+    res.send(ForecastData);
 }
 
 
