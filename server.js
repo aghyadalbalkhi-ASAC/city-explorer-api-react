@@ -27,22 +27,40 @@ app.use('/public', express.static('public'));
 app.get('/',Home);
 app.get('/weather', weather);
 
+// Thats catch all the Wrong Routes Path Errors 
+
+// - > https://levelup.gitconnected.com/how-to-handle-errors-in-an-express-and-node-js-app-cb4fe2907ed9
+app.use((req, res, next) => {
+    const error = new Error(`Not found`);
+    error.status = 404;
+    next(error);
+   });
+
+   // Thats catch all Errors in Router Block
+   // error handler middleware
+app.use((error, req, res, next) => {
+    res.status(error.status || 500).send({
+     error: {
+     status: error.status || 500,
+     message: error.message || `Internal Server Error`,
+    },
+   });
+  });
+
 
 
 function Home (req, res) {
-    console.log('appp');
     res.send('Hello World')
 }
 
 
 function weather(req, res) {
-    console.log('weather');
+
     let searchQuery = req.query.searchQuery;
     let lat = req.query.lat;
     let lon = req.query.lon;
 
     const cityWeather = data.find( city =>{
-        console.log(city.city_name ,searchQuery );
         return (city.city_name).toLowerCase().includes(searchQuery);
     });
 
