@@ -1,16 +1,17 @@
 'use strict';
 
- const Forecast = require('./Forecast.js')
+const weatherHandeler = require('./weather.js')
+const express = require('express');
 
 require('dotenv').config();
-const express = require('express');
+
 const cors = require('cors');
 const app = express();
-const data = require('./data/weather.json');
-
 
 // Use this as a talking point about environment variables
 const PORT = process.env.PORT || 3002;
+
+
 /////////////// App Setup Related /////////////////////
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -25,10 +26,9 @@ app.use('/public', express.static('public'));
 
 
 app.get('/',Home);
-app.get('/weather', weather);
+app.get('/weather', weatherHandeler);
 
 // Thats catch all the Wrong Routes Path Errors 
-
 // - > https://levelup.gitconnected.com/how-to-handle-errors-in-an-express-and-node-js-app-cb4fe2907ed9
 app.use((req, res, next) => {
     const error = new Error(`Not found`);
@@ -54,22 +54,7 @@ function Home (req, res) {
 }
 
 
-function weather(req, res) {
 
-    let searchQuery = req.query.searchQuery;
-    let lat = req.query.lat;
-    let lon = req.query.lon;
-
-    const cityWeather = data.find( city =>{
-        return (city.city_name).toLowerCase().includes(searchQuery);
-    });
-
-    const ForecastData = cityWeather.data.map(day =>{
-        return (new Forecast (day.weather.description , day.datetime))
-    })
-
-    res.send(ForecastData);
-}
 
 
 
