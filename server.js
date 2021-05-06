@@ -1,15 +1,16 @@
 'use strict';
 
-const weatherHandeler = require('./weather.js')
 const express = require('express');
-
 require('dotenv').config();
-
 const cors = require('cors');
 const app = express();
 
+
+
 // Use this as a talking point about environment variables
 const PORT = process.env.PORT || 3002;
+
+
 
 
 /////////////// App Setup Related /////////////////////
@@ -21,12 +22,16 @@ app.use('/public', express.static('public'));
 //     }))
 
 
+///////////////////////our moduels
+const weatherHandeler = require('./weather.js')
+const movieHandeler = require('./movie.js')
 
 //////////////////////// routes ///////////////////////////////
 
 
 app.get('/',Home);
 app.get('/weather', weatherHandeler);
+app.get('/movies', movieHandeler);
 
 // Thats catch all the Wrong Routes Path Errors 
 // - > https://levelup.gitconnected.com/how-to-handle-errors-in-an-express-and-node-js-app-cb4fe2907ed9
