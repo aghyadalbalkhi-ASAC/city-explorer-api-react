@@ -4,10 +4,11 @@ const superagent = require('superagent');
 const MOVIE_KEY = process.env.MOVIE_KEY;
 
 
-function movieHandeler(req,res,currentcity) {
+function movieHandeler(req,res) {
 
+    let {searchQuery} = req.query;
     try{
-        const url = `https://api.themoviedb.org/4/search/movie?api_key=${MOVIE_KEY}&query=${currentcity}`;
+        const url = `https://api.themoviedb.org/4/search/movie?api_key=${MOVIE_KEY}&query=${searchQuery}`;
 
         superagent.get(url).then(moviedata  => {
             let josnObject = moviedata.body.results;

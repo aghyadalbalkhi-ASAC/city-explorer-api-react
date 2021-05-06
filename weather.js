@@ -7,7 +7,7 @@ const WEATHER_KEY = process.env.WEATHER_KEY;
 
 function weatherHandeler(req, res) {
 
-    let {searchQuery,lat,lon} = req.query;
+    let {lat,lon} = req.query;
 
     try{
         const url = `https://api.weatherbit.io/v2.0/forecast/daily?key=${WEATHER_KEY}&lat=${lat}&lon=${lon}`;
