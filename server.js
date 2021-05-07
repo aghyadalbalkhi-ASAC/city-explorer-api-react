@@ -23,8 +23,11 @@ app.use('/public', express.static('public'));
 
 
 ///////////////////////our moduels
-const weatherHandeler = require('./weather.js')
-const movieHandeler = require('./movie.js')
+const weatherHandeler = require('./weather.js');
+const movieHandeler = require('./movie.js');
+const trailsHandeler = require('./trails.js');
+const yelpHandeler = require('./yelp.js');
+
 
 //////////////////////// routes ///////////////////////////////
 
@@ -32,6 +35,8 @@ const movieHandeler = require('./movie.js')
 app.get('/',Home);
 app.get('/weather', weatherHandeler);
 app.get('/movies', movieHandeler);
+app.get('/trails', trailsHandeler);
+app.get('/yelp', yelpHandeler);
 
 // Thats catch all the Wrong Routes Path Errors 
 // - > https://levelup.gitconnected.com/how-to-handle-errors-in-an-express-and-node-js-app-cb4fe2907ed9
