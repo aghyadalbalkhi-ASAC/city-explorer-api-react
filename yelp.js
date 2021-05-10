@@ -9,12 +9,13 @@ function yelpHandeler(req,res) {
     
     try{
     let page = req.query.page;
+    let cityname = req.query.cityname;
     let pagNum = 5;
     let beginnigPage = (page-1)*pagNum;
     const HeaderParameter = {
       terms: 'food',
       limit : 5,
-      location: 'london',
+      location: cityname,
        offset : beginnigPage,
     };
 
